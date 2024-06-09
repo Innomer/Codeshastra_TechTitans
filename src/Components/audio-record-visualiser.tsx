@@ -118,7 +118,7 @@ export const AudioRecorderWithVisualizer = ({
           },
         );
         console.log(dataa);
-        setYoutubeResponse((prev) => [...prev, dataa]);
+        setYoutubeResponse((prev) => dataa);
       }
     }
     webSearch();
@@ -234,6 +234,7 @@ export const AudioRecorderWithVisualizer = ({
     }
   }
 
+
   const submitRecording = async (blob: Blob) => {
     const loadingToast = toast.loading("Loading");
     let loadingToast2;
@@ -261,20 +262,22 @@ export const AudioRecorderWithVisualizer = ({
               query: data.src,
             },
           );
-          console.log(dataa);
+          console.log(dataa); 
           const mailto = encodeURIComponent(dataa.mailto || "");
           const subject = encodeURIComponent(dataa.subject || "");
           const cc =
             dataa.cc?.length > 0 ? encodeURIComponent(dataa.cc[0]) : "";
           const mailtoLink = document.getElementById("mailtoLink");
           const mailtoHref = `mailto:${mailto}?subject=${subject}&cc=${dataa.cc?.length > 0 ? dataa.cc[0] : ""}`; // Use your dynamically generated link here
-          mailtoLink.href = mailtoHref;
-          mailtoLink.click();
+          // mailtoLink.href = mailtoHref;
+          // console.log(mailtoHref)
+          // mailtoLink.click();
 
           const url = `mailto:${mailto}?subject=${subject}`;
           console.log(url);
           window.open(url);
           window?.focus();
+
           return;
         } catch (err) {
           toast.error("There was an error in seding the email");
