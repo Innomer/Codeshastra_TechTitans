@@ -17,7 +17,7 @@ from github_commands import GitHubClient
 pygame.init()
 # genai.configure(api_key="")
 # model = genai.GenerativeModel('gemini-pro')
-gcC= GitHubClient()
+# gcC= GitHubClient(username="Innomer", password="Innomer@123")
 
 width, height = 800, 600
 screen = pygame.display.set_mode((width, height))
